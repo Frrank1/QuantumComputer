@@ -1,5 +1,5 @@
 # QuantumComputer
-Deploy a Quantum Computer in Microsoft Azure
+Deploy a Microsoft Quantum Computer in Microsoft Azure
 
 Select the type of Quantum Computer you need, select the number of qubits you need, and click the "Deploy to Azure" button. 
 
