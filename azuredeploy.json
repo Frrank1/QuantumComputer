@@ -11,7 +11,7 @@
         "virtualMachineSize": {
             "type": "string"
         },
-        "adminUsername": {
+        "adminUserName": {
 	    "defaultValue": "liquid",
             "type": "string"
         },
@@ -80,7 +80,7 @@
             "properties": {
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminUserName": "[parameters('adminUserName')]",
                     "adminPassword": "[parameters('adminPassword')]"
                 },
                 "hardwareProfile": {
@@ -97,7 +97,6 @@
                         "name": "[parameters('virtualMachineName')]",
                         "createOption": "fromImage"
                     },
-                    "dataDisks": []
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -193,9 +192,9 @@
         }
     ],
     "outputs": {
-        "adminUsername": {
+        "adminUserName": {
             "type": "string",
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('adminUserName')]"
         }
     }
 }
