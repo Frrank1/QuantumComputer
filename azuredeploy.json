@@ -12,6 +12,7 @@
             "type": "string"
         },
         "adminUsername": {
+	    "defaultValue": "liquid",
             "type": "string"
         },
         "QuantumMachineType": {
@@ -20,7 +21,9 @@
             "allowedValues": [
                 "Topological",
                 "Adiabatic",
-                "Universal"
+                "Trapped Ion",
+		"Quantum Dot",
+		"Superconducting"
             ],
             "metadata": {
                 "description": "Type of Quantum Computer to deploy"
