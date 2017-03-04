@@ -5,16 +5,6 @@
         "location": {
             "type": "string"
         },
-        "virtualMachineName": {
-            "type": "string"
-        },
-        "virtualMachineSize": {
-            "type": "string"
-        },
-        "adminUserName": {
-	    "defaultValue": "liquid",
-            "type": "string"
-        },
         "QuantumMachineType": {
             "type": "string",
             "defaultValue": "Topological",
@@ -22,8 +12,8 @@
                 "Topological",
                 "Adiabatic",
                 "Trapped Ion",
-	            	"Quantum Dot",
-	            	"Superconducting"
+	        "Quantum Dot",
+	        "Superconducting"
             ],
             "metadata": {
                 "description": "Type of Quantum Computer to deploy"
@@ -36,32 +26,52 @@
                 "description": "64 Qubits should be enough for anybody."
             }
         },
-        "virtualNetworkName": {
-            "type": "string"
+        "virtualMachineName": {
+            "type": "string",
+	    "defaultValue": "liquid"
         },
-        "networkInterfaceName": {
-            "type": "string"
+        "virtualMachineSize": {
+            "type": "string",
+	    "defaultValue": "Standard_A1"
         },
-        "networkSecurityGroupName": {
-            "type": "string"
+        "adminUserName": {
+            "type": "string",
+	    "defaultValue": "liquid"
         },
         "adminPassword": {
             "type": "securestring"
         },
+        "virtualNetworkName": {
+            "type": "string",
+	    "defaultValue": "liquidVNET"
+        },
+        "networkInterfaceName": {
+            "type": "string",
+	    "defaultValue": "liquidLIF"
+        },
+        "networkSecurityGroupName": {
+            "type": "string",
+	    "defaultValue": "liquidSGRP"
+        },
         "addressPrefix": {
-            "type": "string"
+            "type": "string",
+	    "defaultValue": "10.0.0.0/16"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+	    "defaultValue": "liquidNET"
         },
         "subnetPrefix": {
-            "type": "string"
+            "type": "string",
+	    "defaultValue": "10.0.0.0/24"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+	    "defaultValue": "liquidIP"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "type": "string",
+	    "defaultValue": "Dynamic"
         }
     },
     "variables": {
