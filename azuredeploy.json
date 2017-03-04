@@ -11,30 +11,11 @@
         "virtualMachineSize": {
             "type": "string"
         },
-        "adminUserName": {
-	    "defaultValue": "liquid",
+        "adminUsername": {
             "type": "string"
         },
-        "QuantumMachineType": {
-            "type": "string",
-            "defaultValue": "Topological",
-            "allowedValues": [
-                "Topological",
-                "Adiabatic",
-                "Trapped Ion",
-		"Quantum Dot",
-		"Superconducting"
-            ],
-            "metadata": {
-                "description": "Type of Quantum Computer to deploy"
-            }
-        },
-        "NumberofQubits": {
-            "type" : "int",
-            "defaultValue": 64,
-            "metadata": {
-                "description": "64 Qubits should be enough for anybody."
-            }
+        "storageAccountName": {
+            "type": "string"
         },
         "virtualNetworkName": {
             "type": "string"
@@ -47,6 +28,15 @@
         },
         "adminPassword": {
             "type": "securestring"
+        },
+        "diagnosticsStorageAccountName": {
+            "type": "string"
+        },
+        "diagnosticsStorageAccountId": {
+            "type": "string"
+        },
+        "diagnosticsStorageAccountType": {
+            "type": "string"
         },
         "addressPrefix": {
             "type": "string"
@@ -65,7 +55,7 @@
         }
     },
     "variables": {
-        "vnetId": "[resourceId('quangrp','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "vnetId": "[resourceId('liquidgrp','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
     },
     "resources": [
@@ -75,12 +65,13 @@
             "apiVersion": "2016-04-30-preview",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
             ],
             "properties": {
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineName')]",
-                    "adminUserName": "[parameters('adminUserName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
                 },
                 "hardwareProfile": {
@@ -95,8 +86,12 @@
                     },
                     "osDisk": {
                         "name": "[parameters('virtualMachineName')]",
-                        "createOption": "fromImage"
-                    }
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS"
+                        }
+                    },
+                    "dataDisks": []
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -104,7 +99,22 @@
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
                         }
                     ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[reference(resourceId('liquidgrp', 'Microsoft.Storage/storageAccounts', parameters('diagnosticsStorageAccountName')), '2015-06-15').primaryEndpoints['blob']]"
+                    }
                 }
+            }
+        },
+        {
+            "name": "[parameters('diagnosticsStorageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-06-15",
+            "location": "[parameters('location')]",
+            "properties": {
+                "accountType": "[parameters('diagnosticsStorageAccountType')]"
             }
         },
         {
@@ -148,13 +158,13 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId('quangrp','Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                                "id": "[resourceId('liquidgrp','Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
                             }
                         }
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('quangrp', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                    "id": "[resourceId('liquidgrp', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
                 }
             }
         },
@@ -192,9 +202,9 @@
         }
     ],
     "outputs": {
-        "adminUserName": {
+        "adminUsername": {
             "type": "string",
-            "value": "[parameters('adminUserName')]"
+            "value": "[parameters('adminUsername')]"
         }
     }
 }
