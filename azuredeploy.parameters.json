@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "virtualMachineName": {
+            "value": "quantum"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_A1"
+        },
+        "adminUsername": {
+            "value": "mk"
+        },
+        "storageAccountName": {
+            "value": "quangrpdisks612"
+        },
+        "virtualNetworkName": {
+            "value": "quangrp-vnet"
+        },
+        "networkInterfaceName": {
+            "value": "quantum556"
+        },
+        "networkSecurityGroupName": {
+            "value": "quantum-nsg"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "addressPrefix": {
+            "value": "10.1.4.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.1.4.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "quantum-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        }
+    }
+}
