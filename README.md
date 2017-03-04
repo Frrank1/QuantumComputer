@@ -3,16 +3,16 @@ Deploy a Quantum Computer in Microsoft Azure
 
 Select the type of Quantum Computer you need, select the number of qubits you need, and click the "Deploy to Azure" button. 
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2mkiernan%2Fquantumcomputer%2Fmaster%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2mkiernan%2FQuantumComputer%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2Fquantumcomputer%2Fmaster%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2FQuantumComputer%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
 Ok, so it's not really a quantum computer. It's a quantum simulator, based on Microsoft <a href=https://www.microsoft.com/en-us/research/project/language-integrated-quantum-operations-liqui/>LIQUi|></a>
 
-This template deploys an Ubuntu VM with the Microsoft LIQUiD software pre-installed.
+This template deploys an Ubuntu VM with the Microsoft LIQUiD software pre-installed and configured.
 
 You can read more about the Microsoft Quantum Computing project at <a href="https://stationq.microsoft.com/">Microsoft StationQ</a>, and access the LIQUiD "Language Integrated Quantum Operations Simulator" code on <a href="http://stationq.github.io/Liquid/">github.</a>
 
