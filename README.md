@@ -3,9 +3,11 @@ Deploy a Quantum Computer in Microsoft Azure
 
 Select the type of Quantum Computer you need, select the number of qubits you need, and click the "Deploy to Azure" button. 
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2mkiernan%2FQuantumComputer%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2FQuantumComputer%2Fmaster%2Fazuredeploy.json" target="_blank">
+   <img alt="Deploy to Azure" src="http://azuredeploy.net/deploybutton.png"/>
 </a>
+
+
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2FQuantumComputer%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
